@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Wie ben ik?</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
+</head>
+<body onload="startGame()">
+    <div id="container">
+        <div id="header">
+            <img src="https://www.bing.com/th?id=OIP._AwnzN8v2oaaPc3ZK21wdQHaHa&w=142&h=170&c=8&rs=1&qlt=90&o=6&dpr=1.25&pid=3.1&rm=2" alt="" />
+          <h1 class="w3-container w3-center w3-animate-opacity"><i>Jesse Snel</i></h1>
+        </div>
+        <div id="content">
+            <h2 class="w3-container w3-center w3-animate-opacity">Over Mij</h2>
+            <div id="intro">
+            <h2 class="w3-container w3-center w3-animate-opacity">welkom op mijn website</h2>
+            </div>
+            <div id="overig">
+            <h2 class="w3-container w3-center w3-animate-opacity">ik ben Jesse</h2>
+            </div>
+            <div id="kennis">
+                <ul>
+                  <h3 class="w3-container w3-center w3-animate-opacity">ik werk bij new york pizza, ik ga naar de sportschool daar doe ik vooral kickboxen, ik ga vooral vaak naar buiten in de avond en ik heb een puppy van 1 jaar oud. Over dit vak weet ik nog weinig zoals je aan deze site ziet maar ik kan goed leren als ik hulp krijg</h3>
+                 
+                </ul>
+              </div>
+            </div>
+
+           
+           
+              <div id="experimental">
+            
+                <h2>Experimental Zone</h2>
+                
+                <div>
+                <script>
+
+                  var myGamePiece;
+                  
+                  function startGame() {
+                      myGamePiece = new component(6605, 6005, "red", 250, 230);
+                      myGameArea.start();
+                  }
+                  
+                  var myGameArea = {
+                      canvas : document.createElement("canvas"),
+                      start : function() {
+                          this.canvas.width = 2000;
+                          this.canvas.height = 250;
+                          this.context = this.canvas.getContext("2d");
+                          document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+                          this.frameNo = 0;
+                          this.interval = setInterval(updateGameArea, 20);
+                      },
+                      stop : function() {
+                          clearInterval(this.interval);
+                      },    
+                      clear : function() {
+                          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                      }
+                  }
+                  
+                  function component(width, height, color, x, y, type) {
+                  
+                      this.type = type;
+                      this.width = width;
+                      this.height = height;
+                      this.speed = 60;
+                      this.angle = 2;
+                      this.x = x;
+                      this.y = y;    
+                      this.update = function() {
+                          ctx = myGameArea.context;
+                          ctx.save();
+                          ctx.translate(this.x, this.y);
+                          ctx.rotate(this.angle);
+                          ctx.fillStyle = color;
+                          ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height);        
+                          ctx.restore();    
+                      }
+                      this.newPos = function() {
+                          this.x += this.speed * Math.sin(this.angle);
+                          this.y -= this.speed * Math.cos(this.angle);
+                      }
+                  }
+                  
+                  function updateGameArea() {
+                      myGameArea.clear();
+                      myGamePiece.newPos();
+                      myGamePiece.update();
+                  }
+                  
+                  </script>    
+                  
+                  </div>
+              
+             </div>
+
+              <div id="footer">
+
+                &copy; 2022
+                <br />
+                <ul>
+                  <li>
+                    <a href="https://th.bing.com/th/id/OIP.8pLAW5-E9udVmvNohyxvqgHaEK?w=279&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7" title="Instagram"
+                      ><img src="/download.jfif" alt=""
+                    /></a>
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com/channel/UCmNUHHASggE4pUGUMBv0OdQ" title="Youtube"
+                      ><img src="/download.png" alt="Youtube"
+                    /></a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+    </div>
+</body>
+</html>
